@@ -1,15 +1,40 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+  const formRef = useRef();
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => {
-      setSent(false);
-      e.target.reset();
-    }, 2500);
+    setLoading(true);
+
+    // TODO: Replace with your actual EmailJS credentials
+    emailjs
+      .sendForm(
+        'service_vvp8wt9',
+        'template_g7ye58f',
+        formRef.current,
+        {
+          publicKey: '2so7vn_CHlIRhpZmy',
+        }
+      )
+      .then(
+        () => {
+          setSent(true);
+          setLoading(false);
+          setTimeout(() => {
+            setSent(false);
+            e.target.reset();
+          }, 3500);
+        },
+        (error) => {
+          console.error('EmailJS Error:', error.text);
+          setLoading(false);
+          alert('Failed to send the message. Please try again later.');
+        }
+      );
   };
 
   return (
@@ -17,25 +42,26 @@ export default function Contact() {
       <div className="section-inner">
         <h2 className="section-heading anim-reveal">Feeding a hungry audience?</h2>
         <div className="contact-grid">
-          <form className="contact-form anim-reveal" id="contactForm" onSubmit={handleSubmit}>
+          <form className="contact-form anim-reveal" id="contactForm" ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">
-              <input type="text" id="formName" placeholder="Your Name" required />
+              <input type="text" id="formName" name="user_name" placeholder="Your Name" required />
             </div>
             <div className="form-group">
-              <input type="email" id="formEmail" placeholder="Your Email" required />
+              <input type="email" id="formEmail" name="user_email" placeholder="Your Email" required />
             </div>
             <div className="form-group">
-              <input type="text" id="formSubject" placeholder="Subject" />
+              <input type="text" id="formSubject" name="subject" placeholder="Subject" />
             </div>
             <div className="form-group">
-              <textarea id="formMessage" placeholder="Your Message" rows="5" required />
+              <textarea id="formMessage" name="message" placeholder="Your Message" rows="5" required />
             </div>
             <button
               type="submit"
               className="btn btn-cta btn-lg"
+              disabled={loading}
               style={sent ? { background: '#98c1d9', transform: 'scale(1.05)' } : {}}
             >
-              {sent ? 'Message Sent! ✓' : 'Send Message'}
+              {loading ? 'Sending...' : sent ? 'Message Sent! ✓' : 'Send Message'}
             </button>
           </form>
 
@@ -47,7 +73,7 @@ export default function Contact() {
               </svg>
               <div>
                 <h4>Email</h4>
-                <p>prasanth@example.com</p>
+                <p>muddakaprasanth@gmail.com</p>
               </div>
             </div>
 

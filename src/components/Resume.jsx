@@ -8,7 +8,7 @@ export default function Resume() {
         <p className="section-sub">
           My capabilities come to life through a fully integrated skill set — strategy, architecture, and pixel-perfect execution.
         </p>
-        <a href="#" className="btn btn-cta btn-lg" download>
+        <a href="/MuddakaPrasanthResume-1.pdf" className="btn btn-cta btn-lg" target="_blank" rel="noopener noreferrer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
             <polyline points="7 10 12 15 17 10" />

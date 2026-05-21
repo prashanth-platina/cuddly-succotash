@@ -1,5 +1,5 @@
-import ProfileCard from './ProfileCard';
 import useMagneticButton from '../hooks/useMagneticButton';
+import CatScene from './CatScene';
 
 export default function Hero() {
   const mag = useMagneticButton();
@@ -49,9 +49,10 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href="#resume"
+              href="/MuddakaPrasanthResume-1.pdf"
               className="btn btn-outline magnetic-btn"
-              onClick={(e) => scrollTo(e, 'resume')}
+              target="_blank"
+              rel="noopener noreferrer"
               onMouseMove={mag.onMouseMove}
               onMouseLeave={mag.onMouseLeave}
             >
@@ -68,21 +69,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="hero-profile-card anim-reveal" style={{ '--delay': '0.4s' }}>
-          <ProfileCard
-            avatarUrl="/prasah-avatar.png"
-            name="Prasah"
-            title="Full Stack Developer"
-            handle="prashanth-platina"
-            status="Available for work"
-            contactText="Let's Talk"
-            showUserInfo={true}
-            enableTilt={true}
-            behindGlowColor="rgba(232, 168, 124, 0.5)"
-            innerGradient="linear-gradient(145deg, #1a1a1a88 0%, #e8a87c44 100%)"
-            onContactClick={handleContactClick}
-          />
-        </div>
+        <CatScene />
       </div>
     </section>
   );
