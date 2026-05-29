@@ -17,6 +17,16 @@ const liveIcon = (
 
 const projects = [
   {
+    title: 'MyOpBot',
+    sub: 'Discord Moderation Suite',
+    tags: ['Python', 'discord.py', 'Moderation', 'Admin Tools', 'Automation'],
+    image: '/myopbot.jpg',
+    link: 'https://my-op-bot.vercel.app/',
+    repo: 'https://github.com/prashanth-platina/MyOpBot',
+    icon: liveIcon,
+    iconLabel: 'Live Demo',
+  },
+  {
     title: 'AI Digit Recognizer',
     sub: 'Machine Learning App',
     tags: ['React.js', 'ML API', 'Canvas API'],
@@ -70,7 +80,7 @@ export default function Projects() {
     <section className="section section-cream" id="projects">
       <div className="section-inner">
         <div className="projects-header anim-reveal">
-          <div className="projects-counter">01 /04</div>
+          <div className="projects-counter">01 /05</div>
           <div>
             <h2 className="section-heading-lg">Feed on my latest work</h2>
             <p className="section-sub">(see how I stop the scroll)</p>
